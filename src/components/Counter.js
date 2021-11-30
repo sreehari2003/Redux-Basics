@@ -2,6 +2,8 @@ import classes from "./Counter.module.css";
 //from redux
 import { useSelector, useDispatch } from "react-redux";
 
+import { counterActions } from "../store";
+
 const Counter = () => {
   //pass a function to useSelector
   //to acces the data
@@ -9,22 +11,19 @@ const Counter = () => {
   //use dispatch retursn an function
   const dispatch = useDispatch();
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
     console.log(toggle);
   };
   const toggle = useSelector((view) => view.showCounter);
   const add = () => {
-    dispatch({ type: "add", amount: 1 });
+    dispatch(counterActions.increment());
   };
   const addF = () => {
-    dispatch({ type: "add", amount: 5 });
+    dispatch(counterActions.increase(5));
   };
   const sub = () => {
-    dispatch({ type: "sub" });
+    dispatch(counterActions.decrement());
   };
-
-  const view = `   `;
-
   return (
     <>
       <main className={classes.counter}>
