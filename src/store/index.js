@@ -21,14 +21,29 @@ const counterSlice = createSlice({
     },
   },
 });
+//for authSlice
+const AuthState = { isAuthed: false };
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState: AuthState,
+  reducers: {
+    login(state) {
+      state.isAuthed = true;
+    },
+    logout(state) {
+      state.isAuthed = false;
+    },
+  },
+});
 
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: { value: counterSlice.reducer, Auth: authSlice.reducer },
   //VIMP
   ///here createSlice.reducer is not a typo it is object underhood
 });
 
 export const counterActions = counterSlice.actions;
 // //these are functions we declared we are passing the function to counter.js
-
+export const AuthActions = authSlice.actions;
 export default store;

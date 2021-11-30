@@ -7,14 +7,14 @@ import { counterActions } from "../store";
 const Counter = () => {
   //pass a function to useSelector
   //to acces the data
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector((state) => state.value.counter);
   //use dispatch retursn an function
   const dispatch = useDispatch();
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggleCounter());
     console.log(toggle);
   };
-  const toggle = useSelector((view) => view.showCounter);
+  const toggle = useSelector((view) => view.value.showCounter);
   const add = () => {
     dispatch(counterActions.increment());
   };
